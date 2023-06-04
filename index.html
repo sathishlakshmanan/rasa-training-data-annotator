@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Rasa Annotator </title>
+        <meta charset="UTF-8">
+        <title> Training data Annotator </title>
         <link rel="stylesheet" href="./css/textarea.css">
-        <style> </style>
     </head>
 
     <body>
@@ -14,25 +14,59 @@
 
             <div class="right">
                 <div class="entity-input">
-                    <form action="">
-                    <input type="text" id="entity-name" name="entity-name" placeholder="Entity Name">
-                    <input type="text" id="entity-value" name="entity-value" placeholder="Entity Value">
-                    <input type="text" id="entity-group" name="entity-group" placeholder="Entity Group">
-                    <input type="text" id="entity-role" name="entity-role" placeholder="Entity Role">
-                <br>
-                <input type="submit" value="Add Entity">
-                <input type="reset">
-                    </form>
-                <br>
-                <textarea id="textarea-up" placeholder="All the Entities">
-                </textarea>
-                <br>
-                <input type="submit" value="Create">
-                </div>
+                    <div class="form-input">
+                        <form class="entity-form" id="entity-form">
+                            <div class="row">
+                                <div class="left-column">
+                                    <label for="entity-name">Entity Name: </label>
+                                </div>
+                                <div class="right-column">
+                                    <input type="text" id="entity-name" name="entity" style="width:80%" placeholder="Entity Name">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="left-column">
+                                    <label for="entity-value">Entity Value: </label>
+                                </div>
+                                <div class="right-column">
+                                    <input type="text" id="entity-value" name="value" style="width:80%" placeholder="Entity Value">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="left-column">
+                                    <label for="entity-group">Entity Group: </label>
+                                </div>
+                                <div class="right-column">
+                                    <input type="text" id="entity-group" name="group" style="width:80%" placeholder="Entity Group">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="left-column">
+                                    <label for="entity-role">Entity Role: </label>
+                                </div>
+                                <div class="right-column">
+                                    <input type="text" id="entity-role" name="role" style="width:80%" placeholder="Entity Role">
+                                </div>
+                            </div>
+                            <div class="submit-entity">
+                                <input type="submit" style="background-color:green" id="submit" value="Add Entity">
+                                <input type="reset" style="background-color:red" value="Reset">
+                            </div>
+                        </form>
+                            </div>
+                            <br>
+                            <div class="create-entity">
+                                <textarea id="textarea-up">
 
-                <div class="entity-buttons"> entity-buttons 
+                                </textarea>
+                                <br>
+                                <input type="submit" value="Create">
+                            </div>
+
+                    </div>
+                    <div class="entity-buttons" id="entity-buttons"> entity-buttons </div>
                 </div>
             </div>
-        </div>
+    <script src="./js/main.js"> </script>
     </body>
 </html>

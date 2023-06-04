@@ -23,9 +23,9 @@ body{
 }
 
 #textarea-up{
-  color: red;
-  background-color: white;
+  color: black;
   font-size: 16px;
+  height: 150%;
 }
 
 .right{
@@ -43,8 +43,65 @@ body{
 }
 
 .entity-buttons{
+    display: grid;
   background-color: white;
   padding: 10px;
   border: 10px solid pink;
   border-radius: 20px;
+}
+
+.submit-entity{
+  display: flex;
+  grid-gap: 20px;
+  padding: 10px;
+  padding-left: 35%;
+  height: 25px;
+}
+
+input[type=submit]:hover {
+  cursor: pointer;
+  background-color: gray;
+}
+
+input[type=reset]:hover {
+  cursor: pointer;
+  background-color: brown;
+}
+
+.entity-form{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 3px;
+  background-color: gray;
+  padding: 10px;
+  border: 3px dotted black;
+  border-radius: 10px;
+}
+
+.create-entity{
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  grid-gap: 3px;
+  background-color: yellow;
+  padding: 10px;
+  height: 45%;
+  border: 3px dotted black;
+  border-radius: 10px;
+}
+
+.row{
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+.left-column {
+  float: left;
+  margin-top: 6px;
+  padding-left: 10px;
+}
+
+.right-column {
+  float: right;
+  margin-top: 6px;
+  width: 100%;
 }
