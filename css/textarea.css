@@ -1,0 +1,50 @@
+body{
+  background-color: black;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  column-gap : 12px;
+  height: 98vh;
+}
+
+.left{
+  display: grid;
+}
+
+#textarea-left{
+  color: gray;
+  background-color: white;
+  font-size: 18px;
+  padding: 10px;
+  border: 10px solid green;
+  border-radius: 20px;
+}
+
+#textarea-up{
+  color: red;
+  background-color: white;
+  font-size: 16px;
+}
+
+.right{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  row-gap : 12px;
+}
+
+.entity-input{
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  border: 10px solid orange;
+  border-radius: 20px;
+}
+
+.entity-buttons{
+  background-color: white;
+  padding: 10px;
+  border: 10px solid pink;
+  border-radius: 20px;
+}

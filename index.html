@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Rasa Annotator </title>
+        <link rel="stylesheet" href="./css/textarea.css">
+        <style> </style>
+    </head>
+
+    <body>
+        <div class="grid">
+            <div class="left">
+                <textarea id="textarea-left" placeholder="Add training data here..."> </textarea>
+            </div>
+
+            <div class="right">
+                <div class="entity-input">
+                    <form action="">
+                    <input type="text" id="entity-name" name="entity-name" placeholder="Entity Name">
+                    <input type="text" id="entity-value" name="entity-value" placeholder="Entity Value">
+                    <input type="text" id="entity-group" name="entity-group" placeholder="Entity Group">
+                    <input type="text" id="entity-role" name="entity-role" placeholder="Entity Role">
+                <br>
+                <input type="submit" value="Add Entity">
+                <input type="reset">
+                    </form>
+                <br>
+                <textarea id="textarea-up" placeholder="All the Entities">
+                </textarea>
+                <br>
+                <input type="submit" value="Create">
+                </div>
+
+                <div class="entity-buttons"> entity-buttons 
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
