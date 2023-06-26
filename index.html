@@ -1,9 +1,32 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
+<!-- <html> -->
+<!--     <head> -->
+<!--         <meta charset="UTF-8"> -->
+<!--         <title> Training data Annotator </title> -->
+<!--         <link rel="stylesheet" href="./css/index.css"> -->
+<!--     </head> -->
+<!--  -->
+<!--     <body> -->
+<!--         <div class="grid"> -->
+<!--             <div class="left"> -->
+<!--                 <textarea id="textarea-left" placeholder="Add training data here..."> </textarea> -->
+<!--             </div> -->
+<!--             <div class="right"> -->
+<!--               <div class="up"> -->
+<!--               </div> -->
+<!--               <div class="down"> -->
+<!--               </div> -->
+<!--             </div> -->
+<!--       </div> -->
+<!--     </body> -->
+<!-- </html> -->
+
+<!doctype html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title> Training data Annotator </title>
-        <link rel="stylesheet" href="./css/textarea.css">
+        <meta charset="utf-8">
+        <title> training data annotator </title>
+        <link rel="stylesheet" href="./css/index.css">
     </head>
 
     <body>
@@ -13,7 +36,7 @@
             </div>
 
             <div class="right">
-                <div class="entity-input">
+                <div class="up">
                     <div class="form-input">
                         <form class="entity-form" id="entity-form">
                             <div class="row">
@@ -50,21 +73,23 @@
                             </div>
                             <div class="submit-entity">
                                 <input type="submit" style="background-color:green" id="submit" value="Add Entity">
-                                <input type="reset" style="background-color:red" value="Reset">
+                                <input type="reset" style="background-color:#ff3300" value="Reset">
                             </div>
                         </form>
                             </div>
                             <br>
                             <div class="create-entity">
-                                <textarea id="textarea-up">
+                                <div class="innerc">
+                                    <textarea id="textarea-up">
 
-                                </textarea>
-                                <br>
-                                <input type="submit" value="Create">
+                                    </textarea>
+                                    <br>
+                                    <input type="submit" value="Create">
+                                </div>
                             </div>
 
                     </div>
-                    <div class="entity-buttons" id="entity-buttons"> entity-buttons </div>
+                    <div class="down" id="entity-buttons"> entity-buttons </div>
                 </div>
             </div>
     <script src="./js/main.js"> </script>
