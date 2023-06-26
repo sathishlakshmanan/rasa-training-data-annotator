@@ -1,0 +1,90 @@
+/* body{background-color: white; margin: 0; padding: 0;} */
+/* *{box-sizing: border-box;} */
+/* .grid{display: grid; grid-template-columns: 1.5fr 1fr; position: absolute; top: 0; left: 0; right: 0; bottom: 0;} */
+/* .left{background-color: white;} */
+/* .right{display: grid;} */
+/* .up{background-color: red; height: 49.5vh; border:5px solid pink;} */
+/* .down{background-color: green; height: 49.5vh; border:5px solid pink;} */
+/* #textarea-left{height: 99.6%; width: 100%; border:5px solid gray; box-sizing:border-box;} */
+
+body {
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.left {
+  background-color: white;
+  overflow: auto; /* Enable scrolling within the left container if needed */
+}
+
+.right {
+  display: grid;
+  overflow: hidden; /* Hide any content overflowing the right container */
+}
+
+.up {
+  background-color: #edd38c;
+  height: 50vh;
+  border: 5px solid pink;
+}
+
+.down {
+  background-color: #8c7d54;
+  height: 50vh;
+  border: 5px solid pink;
+}
+
+#textarea-left {
+  /* height: calc(100% - 10px); [> Subtract the border width from the height <] */
+  height: 99.5%; /* Subtract the border width from the height */
+  width: 100%;
+  border: 5px solid gray;
+  box-sizing: border-box;
+}
+.create-entity {
+  background: gray;
+  height: 250px;
+  width: 700px;
+  position: relative;
+}
+
+.innerc {
+  background: orange;
+  width: 600px;
+  height: 230px;
+  margin: 0 auto;
+}
+/* .create-entity { */
+/*     position: relative; */
+/*     height: 100px; */
+/*     width: 100px; */
+/* } */
+/*  */
+/* .innerc { */
+/*   position: absolute; */
+/*   transform: translate(-50%, -50%); */
+/* } */
+
+#textarea-up {
+  /* height: calc(100% - 10px); [> Subtract the border width from the height <] */
+  height: 100%; /* subtract the border width from the height */
+  width: 100%;
+  border: 5px solid gray;
+  box-sizing: border-box;
+}
