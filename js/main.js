@@ -17,6 +17,7 @@ let createButton = (parsedJsonData) => {
 };
 
 const newBtn = document.getElementById('entity-buttons');
+
 newBtn.onclick = function(){
     var txtarea = document.getElementById("textarea-left");
 
@@ -28,15 +29,21 @@ newBtn.onclick = function(){
     // Obtain the index of the last selected character
     var finish = txtarea.selectionEnd;
 
-    // Obtain the selected text
-    var sel = txtarea.value.substring(start, finish);
-    var replace = "---" + sel + "---";
-    // var replace = newBtn.textContent;
-    txtarea.value =  txtarea.value.substring(0,start) + replace  + txtarea.value.substring(finish,len);
+    var selectedTextToString = String(newBtn.innerText);
+    var cleanedText = selectedTextToString.match(/{([^}]+)}/g);
+    var cleanedTextParsed = JSON.parse(cleanedText);
 
-    console.log(sel);
-    console.log(newBtn.innerText);
-    console.log(newBtn.textContent);
+    // Obtain the selected text
+    var selectedText = txtarea.value.substring(start, finish);
+    if (cleanedTextParsed['value'] === ""){
+        cleanedTextParsed.value = selectedText
+    }
+    var replacedText = selectedText + JSON.stringify(cleanedTextParsed);
+    console.log('cleanedText: ', cleanedText)
+    console.log('replacedText: ', replacedText)
+
+    txtarea.value =  txtarea.value.substring(0,start) + replacedText  + txtarea.value.substring(finish,len);
+
 }
 
 function getSelection(){
