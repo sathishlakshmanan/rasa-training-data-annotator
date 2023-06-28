@@ -3,6 +3,42 @@
 //   return "Changes you made may not be saved.";
 // };
 
+const textarea = document.querySelector('textarea');
+textarea.addEventListener('keydown', (e) => {
+  if (e.keyCode === 9) {
+    e.preventDefault();
+
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const value = textarea.value;
+    const selection = value.substring(start, end);
+
+    if (selection.includes('\n')) {
+      // if multiple lines are selected, indent each line
+      const lines = selection.split('\n');
+      const indentedLines = lines.map((line) => `\t${line}`);
+      const indentedText = indentedLines.join('\n');
+
+      textarea.setRangeText(indentedText, start, end, 'end');
+    } else {
+      // if no selection or single line is selected, insert a tab character
+      textarea.setRangeText('\t', start, end, 'end');
+    }
+  } else if (e.keyCode === 13) {
+    // check if the previous line is indented and replicate the indentation
+    const lines = textarea.value.substring(0, textarea.selectionStart).split('\n');
+    const previousLine = lines[lines.length - 1];
+    const indentationMatch = previousLine.match(/^(\t- +)/);
+
+    if (indentationMatch && indentationMatch[1]) {
+      e.preventDefault();
+      const indentation = indentationMatch[1];
+
+      textarea.setRangeText('\n' + indentation, textarea.selectionStart, textarea.selectionEnd, 'end');
+    }
+  }
+});
+
 const form = document.getElementById('entity-form');
 const empty = document.getElementById("textarea-up"); 
 empty.value = "";
@@ -228,22 +264,3 @@ form.addEventListener('submit', (e) => {
     
     createText(parsedJsonDataNew);
 });
-
-
-// function getSelection(){
-//     var txtarea = document.getElementById("textarea-left");
-//
-//     var len = txtarea.value.length;
-//
-//     // Obtain the index of the first selected character
-//     var start = txtarea.selectionStart;
-//
-//     // Obtain the index of the last selected character
-//     var finish = txtarea.selectionEnd;
-//
-//     // Obtain the selected text
-//     var sel = txtarea.value.substring(start, finish);
-//     var replace = "---" + sel + "---";
-//     txtarea.value =  txtarea.value.substring(0,start) + replace + txtarea.value.substring(finish,len);
-//     return sel
-// }
