@@ -4,32 +4,64 @@
 // };
 
 const form = document.getElementById('entity-form');
+const empty = document.getElementById("textarea-up"); 
+empty.value = "";
+// for development
+const example = document.getElementById("textarea-left"); 
+example.value = "i am from chennai.\n\nthis is bangalore. where is your place?\n\nchennai is in Tamilnadu"
+
 // const btn = document.getElementById('submit');
 // console.log(btn);
 
 var buttonNumber = 0;
 var entityDict = [];
 
-let createButton = (parsedJsonData) => {
-
-    buttonNumber++; // to add button name dynamically for new buttons like button-1, button-2, and so on...
+const createBtn = document.getElementById('create-buttons');
+createBtn.onclick = function(){
+    if (empty.value == ""){
+        alert("No buttons to create");
+        console.warn("No buttons to create");
+        return 0;
+    }
     var entityButtons = document.getElementById("entity-buttons");
+    // const entityBtnNew = document.getElementById('entity-buttons');
+    entityButtons.innerHTML = "";
+    const existingText = document.getElementById("textarea-up").value; 
 
-    var btn = document.createElement("BUTTON");
-    btn.className = "button-" + String(buttonNumber);
-    btn.innerHTML = parsedJsonData;
-    btn.id = String(buttonNumber);
+    const pattern = /(\{[^{}]+\})/g;
+    var listOfEntityDicts = existingText.split(pattern);
+    const setOfEntityDicts = new Set(listOfEntityDicts);
 
-    var closeButton = document.createElement("BUTTON");
-    closeButton.className = "button-" + String(buttonNumber);
-    closeButton.innerHTML = '<span onclick=removeClass()>x</span>';
-    closeButton.id = String(buttonNumber);
+    for (dictValue of setOfEntityDicts) {
+        // remove unwanted strings like `, or ""` after split with regex pattern (5 is an arbitrary number)
+        if (dictValue.length <= 5) {
+            continue;
+        }
+        buttonNumber++; // to add button name dynamically for new buttons like button-1, button-2, and so on...
+        var btn = document.createElement("BUTTON");
+        btn.className = "button-" + String(buttonNumber);
+        // btn.innerHTML = '<span onclick=addButtonValue()>'+ String(dictValue) +'</span>';
+        btn.innerHTML = String(dictValue);
+        btn.id = String(buttonNumber);
 
-    entityButtons.appendChild(btn);
-    entityButtons.appendChild(closeButton);
+        // var closeButton = document.createElement("BUTTON");
+        // closeButton.className = "button-" + String(buttonNumber);
+        // closeButton.innerHTML = '<span onclick=removeClass()>x</span>';
+        // closeButton.id = String(buttonNumber);
 
-    console.log("Button created successfully");
-};
+        entityButtons.appendChild(btn);
+        // entityButtons.appendChild(closeButton);
+    }
+
+    console.log("Buttons created successfully");
+    /*
+    THERE IS A BUG :/
+    When inserting the button value for the first time into the textarea, it fails and have to be done again.
+    Instead, once the entity-buttons div is clicked, everything seem to work properly :)
+    So, I am simulating a button click event here (SMORT :D)
+    */
+    entityButtons.click();
+}
 
 function removeClass() {
     var buttons = document.getElementsByTagName("button");
@@ -42,76 +74,112 @@ function removeClass() {
 
             document.getElementById(btnId).remove(); // removes the button consisting entity and other keys
             document.getElementById(btnId).remove(); // removes the 'x' button associated with the previously deleted button
-
-            /* doesn't work
-               classNameNew.parentNode.removeChild(classNameNew);
-               return false;
-            */
         };
     }
 }
 
-const newBtn = document.getElementById('entity-buttons');
+const entityBtnNew = document.getElementById('entity-buttons');
+entityBtnNew.onclick = somefunc;
 
-newBtn.onclick = function(){
-    var txtarea = document.getElementById("textarea-left");
+function somefunc(){
+// function addButtonValue() {
+    var buttons = document.getElementsByTagName("button");
+    var buttonsCount = buttons.length;
 
-    var len = txtarea.value.length;
+    for (var i = 0; i <= buttonsCount; i += 1) {
+        buttons[i].onclick = function(e) {
+            const btnId = this.id;
+            console.log('button id: ', btnId);
+            var txtarea = document.getElementById("textarea-left");
 
-    var start = txtarea.selectionStart; // Obtain the first index of the selected character
-    var finish = txtarea.selectionEnd;  // Obtain the last index of the selected character
+            var len = txtarea.value.length;
 
-    var selectedTextToString = String(newBtn.innerText);
-    var cleanedText = selectedTextToString.match(/{([^}]+)}/g); // get the content only within the curly braces of the text
-    console.log('cleanedText: ', cleanedText)
+            var start = txtarea.selectionStart; // Obtain the first index of the selected character
+            var finish = txtarea.selectionEnd;  // Obtain the last index of the selected character
+            
+            // when deleting a button, accidental input of button value into textarea-left is guarded
+            if (finish - start == 0){
+                return 0;
+            }
 
-    var cleanedTextParsed = JSON.parse(cleanedText);
+            var cleanedText = String(document.getElementById(btnId).innerText);
+            // var cleanedText = selectedTextToString.match(/{([^}]+)}/g); // get the content only within the curly braces of the text
+            console.log('cleanedText: ', cleanedText)
 
-    // Obtain the selected text
-    var selectedText = txtarea.value.substring(start, finish);
-    const spacePattern = /\s{2,}/g;
-    var emptySpacesSelected = spacePattern.test(selectedText);
-    if (emptySpacesSelected == true){
-        const text = "Selected text is empty or too many whitespaces!";
-        console.warn(text);
-        alert(text);
-        return 0;
+            var cleanedTextParsed = JSON.parse(cleanedText);
+
+            // Obtain the selected text
+            var selectedText = txtarea.value.substring(start, finish);
+            const spacePattern = /\s{2,}/g;
+            var emptySpacesSelected = spacePattern.test(selectedText);
+            if (emptySpacesSelected == true){
+                const text = "Selected text is empty or too many whitespaces!";
+                console.warn(text);
+                alert(text);
+                return 0;
+            }
+            console.log('selectedText: ', selectedText)
+            if (cleanedTextParsed.value == undefined){
+                cleanedTextParsed.value = selectedText
+            }
+            var replacedText = selectedText + JSON.stringify(cleanedTextParsed);
+            console.log('replacedText: ', replacedText)
+
+            txtarea.value =  txtarea.value.substring(0,start) + replacedText  + txtarea.value.substring(finish,len);
+        };
     }
-    console.log('selectedText: ', selectedText)
-    if (cleanedTextParsed.value == undefined){
-        cleanedTextParsed.value = selectedText
-    }
-    var replacedText = selectedText + JSON.stringify(cleanedTextParsed);
-    console.log('replacedText: ', replacedText)
-
-    txtarea.value =  txtarea.value.substring(0,start) + replacedText  + txtarea.value.substring(finish,len);
-
 }
 
-function getSelection(){
-    var txtarea = document.getElementById("textarea-left");
-
-    var len = txtarea.value.length;
-
-    // Obtain the index of the first selected character
-    var start = txtarea.selectionStart;
-
-    // Obtain the index of the last selected character
-    var finish = txtarea.selectionEnd;
-
-    // Obtain the selected text
-    var sel = txtarea.value.substring(start, finish);
-    var replace = "---" + sel + "---";
-    txtarea.value =  txtarea.value.substring(0,start) + replace + txtarea.value.substring(finish,len);
-    return sel
-}
+// const entityBtn = document.getElementById('entity-buttons');
+// entityBtn.onclick = function(){
+//     var txtarea = document.getElementById("textarea-left");
+//
+//     var len = txtarea.value.length;
+//
+//     var start = txtarea.selectionStart; // Obtain the first index of the selected character
+//     var finish = txtarea.selectionEnd;  // Obtain the last index of the selected character
+//
+//     // when deleting a button, accidental input of button value into textarea-left is guarded
+//     if (finish - start == 0){
+//         return 0;
+//     }
+//
+//     var selectedTextToString = String(entityBtn.innerText);
+//     var cleanedText = selectedTextToString.match(/{([^}]+)}/g); // get the content only within the curly braces of the text
+//     console.log('cleanedText: ', cleanedText)
+//
+//     var cleanedTextParsed = JSON.parse(cleanedText);
+//
+//     // Obtain the selected text
+//     var selectedText = txtarea.value.substring(start, finish);
+//     const spacePattern = /\s{2,}/g;
+//     var emptySpacesSelected = spacePattern.test(selectedText);
+//     if (emptySpacesSelected == true){
+//         const text = "Selected text is empty or too many whitespaces!";
+//         console.warn(text);
+//         alert(text);
+//         return 0;
+//     }
+//     console.log('selectedText: ', selectedText)
+//     if (cleanedTextParsed.value == undefined){
+//         cleanedTextParsed.value = selectedText
+//     }
+//     var replacedText = selectedText + JSON.stringify(cleanedTextParsed);
+//     console.log('replacedText: ', replacedText)
+//
+//     txtarea.value =  txtarea.value.substring(0,start) + replacedText  + txtarea.value.substring(finish,len);
+//
+// }
 
 function createText(parsedJsonDataNew) {
-    // entityDict.push(parsedJsonDataNew);
-    var existingText = document.getElementById("textarea-up"); 
-    // existingText.innerHTML = "new text";
-    existingText.value = existingText.value + "," + parsedJsonDataNew;
+    const existingText = document.getElementById("textarea-up"); 
 
+    if (existingText.value == ""){
+        existingText.value = parsedJsonDataNew;
+    }
+    else {
+        existingText.value = existingText.value + ", " + parsedJsonDataNew;
+    }
     console.log("existingText: ", existingText.value);
     console.log("combined: ", existingText.value + parsedJsonDataNew);
 }
@@ -132,8 +200,18 @@ form.addEventListener('submit', (e) => {
     var parsedJsonData = JSON.parse(jsonData);
     if(parsedJsonData["entity"] == "" && parsedJsonData["value"] == "" && parsedJsonData["group"] == "" && parsedJsonData["role"] == ""){
         console.warn("Empty form submission");
+        alert("The fields are empty")
         return 0;
     }
+
+    // entity name cannot be empty
+    if (parsedJsonData.entity == ""){
+        // no need to clear the form, as it will be redundant for the users to refill other fields
+        alert("entity name is required")
+        return 0;
+    }
+
+    // delete keys with empty values as they are not required to create buttons
     if (parsedJsonData.value == ""){
         delete parsedJsonData.value;
     }
@@ -150,3 +228,22 @@ form.addEventListener('submit', (e) => {
     
     createText(parsedJsonDataNew);
 });
+
+
+// function getSelection(){
+//     var txtarea = document.getElementById("textarea-left");
+//
+//     var len = txtarea.value.length;
+//
+//     // Obtain the index of the first selected character
+//     var start = txtarea.selectionStart;
+//
+//     // Obtain the index of the last selected character
+//     var finish = txtarea.selectionEnd;
+//
+//     // Obtain the selected text
+//     var sel = txtarea.value.substring(start, finish);
+//     var replace = "---" + sel + "---";
+//     txtarea.value =  txtarea.value.substring(0,start) + replace + txtarea.value.substring(finish,len);
+//     return sel
+// }
