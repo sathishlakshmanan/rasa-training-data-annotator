@@ -81,7 +81,7 @@ body {
 /*   transform: translate(-50%, -50%); */
 /* } */
 
-#textarea-up {
+#textarea-right {
   /* height: calc(100% - 10px); [> Subtract the border width from the height <] */
   height: 100%; /* subtract the border width from the height */
   width: 100%;

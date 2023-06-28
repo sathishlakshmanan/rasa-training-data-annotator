@@ -40,8 +40,9 @@ textarea.addEventListener('keydown', (e) => {
 });
 
 const form = document.getElementById('entity-form');
-const empty = document.getElementById("textarea-up"); 
-empty.value = "";
+const textareaRight = document.getElementById("textarea-right"); 
+textareaRight.value = "";
+//
 // for development
 const example = document.getElementById("textarea-left"); 
 example.value = "i am from chennai.\n\nthis is bangalore. where is your place?\n\nchennai is in Tamilnadu"
@@ -54,7 +55,7 @@ var entityDict = [];
 
 const createBtn = document.getElementById('create-buttons');
 createBtn.onclick = function(){
-    if (empty.value == ""){
+    if (textareaRight.value == ""){
         alert("No buttons to create");
         console.warn("No buttons to create");
         return 0;
@@ -62,7 +63,7 @@ createBtn.onclick = function(){
     var entityButtons = document.getElementById("entity-buttons");
     // const entityBtnNew = document.getElementById('entity-buttons');
     entityButtons.innerHTML = "";
-    const existingText = document.getElementById("textarea-up").value; 
+    const existingText = document.getElementById("textarea-right").value; 
 
     const pattern = /(\{[^{}]+\})/g;
     var listOfEntityDicts = existingText.split(pattern);
@@ -208,7 +209,7 @@ function somefunc(){
 // }
 
 function createText(parsedJsonDataNew) {
-    const existingText = document.getElementById("textarea-up"); 
+    const existingText = document.getElementById("textarea-right"); 
 
     if (existingText.value == ""){
         existingText.value = parsedJsonDataNew;
@@ -258,7 +259,7 @@ form.addEventListener('submit', (e) => {
         delete parsedJsonData.role;
     }
     const parsedJsonDataNew = JSON.stringify(parsedJsonData);
-    // document.getElementById('textarea-up').value = parsedJsonDataNew;
+    // document.getElementById('textarea-right').value = parsedJsonDataNew;
     console.log("parsedJsonDataNew: ", parsedJsonDataNew)
     // createButton(parsedJsonDataNew);
     
