@@ -116,10 +116,7 @@ function removeClass() {
 }
 
 const entityBtnNew = document.getElementById('entity-buttons');
-entityBtnNew.onclick = somefunc;
-
-function somefunc(){
-// function addButtonValue() {
+entityBtnNew.onclick = function() {
     var buttons = document.getElementsByTagName("button");
     var buttonsCount = buttons.length;
 
@@ -159,54 +156,13 @@ function somefunc(){
             if (cleanedTextParsed.value == undefined){
                 cleanedTextParsed.value = selectedText
             }
-            var replacedText = selectedText + JSON.stringify(cleanedTextParsed);
+            var replacedText = `[${selectedText}]${JSON.stringify(cleanedTextParsed)}`;
             console.log('replacedText: ', replacedText)
 
             txtarea.value =  txtarea.value.substring(0,start) + replacedText  + txtarea.value.substring(finish,len);
         };
     }
 }
-
-// const entityBtn = document.getElementById('entity-buttons');
-// entityBtn.onclick = function(){
-//     var txtarea = document.getElementById("textarea-left");
-//
-//     var len = txtarea.value.length;
-//
-//     var start = txtarea.selectionStart; // Obtain the first index of the selected character
-//     var finish = txtarea.selectionEnd;  // Obtain the last index of the selected character
-//
-//     // when deleting a button, accidental input of button value into textarea-left is guarded
-//     if (finish - start == 0){
-//         return 0;
-//     }
-//
-//     var selectedTextToString = String(entityBtn.innerText);
-//     var cleanedText = selectedTextToString.match(/{([^}]+)}/g); // get the content only within the curly braces of the text
-//     console.log('cleanedText: ', cleanedText)
-//
-//     var cleanedTextParsed = JSON.parse(cleanedText);
-//
-//     // Obtain the selected text
-//     var selectedText = txtarea.value.substring(start, finish);
-//     const spacePattern = /\s{2,}/g;
-//     var emptySpacesSelected = spacePattern.test(selectedText);
-//     if (emptySpacesSelected == true){
-//         const text = "Selected text is empty or too many whitespaces!";
-//         console.warn(text);
-//         alert(text);
-//         return 0;
-//     }
-//     console.log('selectedText: ', selectedText)
-//     if (cleanedTextParsed.value == undefined){
-//         cleanedTextParsed.value = selectedText
-//     }
-//     var replacedText = selectedText + JSON.stringify(cleanedTextParsed);
-//     console.log('replacedText: ', replacedText)
-//
-//     txtarea.value =  txtarea.value.substring(0,start) + replacedText  + txtarea.value.substring(finish,len);
-//
-// }
 
 function createText(parsedJsonDataNew) {
     const existingText = document.getElementById("textarea-right"); 
@@ -215,7 +171,7 @@ function createText(parsedJsonDataNew) {
         existingText.value = parsedJsonDataNew;
     }
     else {
-        existingText.value = existingText.value + ", " + parsedJsonDataNew;
+        existingText.value = `${existingText.value}, ${parsedJsonDataNew}`;
     }
     console.log("existingText: ", existingText.value);
     console.log("combined: ", existingText.value + parsedJsonDataNew);
