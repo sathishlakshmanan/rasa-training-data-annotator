@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title> training data annotator </title>
+        <title>Training data annotator</title>
         <link rel="stylesheet" href="./css/index.css">
     </head>
 
@@ -13,58 +13,56 @@
             </div>
 
             <div class="right">
-                <div class="up">
-                    <div class="form-input">
-                        <form class="entity-form" id="entity-form">
-                            <div class="row">
+                <div class="right-up">
+                    <div class="right-up-form">
+                        <form id="entity-form">
+                            <div class="column1">
                                 <div class="left-column">
-                                    <label for="entity-name">Entity Name: </label>
+                                    <label for="entity-name">Name</label>
                                 </div>
                                 <div class="right-column">
-                                    <input type="text" id="entity-name" name="entity" style="width:80%" placeholder="required">
+                                    <input type="text" id="entity-name" name="entity" style="width:90%" placeholder="entity name" required>
+                                </div>
+                                <div class="left-column">
+                                    <label for="entity-value">Value</label>
+                                </div>
+                                <div class="right-column">
+                                    <input type="text" id="entity-value" name="value" style="width:90%" placeholder="entity value">
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="column2">
                                 <div class="left-column">
-                                    <label for="entity-value">Entity Value: </label>
+                                    <label for="entity-group">Group</label>
                                 </div>
                                 <div class="right-column">
-                                    <input type="text" id="entity-value" name="value" style="width:80%" placeholder="optional (if not provided, value will be filled automatically from the selected text)">
+                                    <input type="text" id="entity-group" name="group" style="width:90%" placeholder="entity group">
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="left-column">
-                                    <label for="entity-group">Entity Group: </label>
+                                    <label for="entity-role">Role</label>
                                 </div>
                                 <div class="right-column">
-                                    <input type="text" id="entity-group" name="group" style="width:80%" placeholder="optional">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="left-column">
-                                    <label for="entity-role">Entity Role: </label>
-                                </div>
-                                <div class="right-column">
-                                    <input type="text" id="entity-role" name="role" style="width:80%" placeholder="optional">
+                                    <input type="text" id="entity-role" name="role" style="width:90%" placeholder="entity role">
                                 </div>
                             </div>
                             <div class="submit-entity">
-                                <input type="submit" style="background-color:green" id="submit" value="Add Entity">
-                                <input type="reset" style="background-color:#ff3300" value="Reset">
+                                <button type="submit" id="submit" style="background-color:green" id="submit">Add Entity</button>
+                                <button type="reset" style="background-color:#ff3300">Reset</button>
                             </div>
                         </form>
-                            </div>
+                        </div>
                             <br>
                             <div class="create-entity">
-                                <div class="innerc">
+                                <div class="create-entity-inner">
                                     <textarea id="textarea-right">
 
                                     </textarea>
                                     <br>
-                                    <input type="submit" id="create-buttons" value="Create">
+                                </div>
+                                <div class="create-entity-buttons">
+                                    <input type="submit" id="create-buttons" value="Create buttons">
+                                    <input type="submit" id="delete-buttons" value="Remove all">
                                 </div>
                             </div>
-
                     </div>
                     <div class="down" id="entity-buttons"> entity-buttons </div>
                 </div>
