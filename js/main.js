@@ -80,6 +80,8 @@ createBtn.onclick = function(){
         // btn.innerHTML = '<span onclick=addButtonValue()>'+ String(dictValue) +'</span>';
         btn.innerHTML = String(dictValue);
         btn.id = String(buttonNumber);
+        btn.style.padding = "5px";
+        btn.style.margin = "5px";
 
         // var closeButton = document.createElement("BUTTON");
         // closeButton.className = "button-" + String(buttonNumber);

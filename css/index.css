@@ -11,7 +11,7 @@ body {
   background-color: white;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Prevent scrolling */
+  overflow: hidden;
 }
 
 * {
@@ -29,25 +29,39 @@ body {
 }
 
 .left {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 50%;
+  bottom: 0;
   background-color: white;
   overflow: auto; /* Enable scrolling within the left container if needed */
 }
 
 .right {
   display: grid;
-  overflow: hidden; /* Hide any content overflowing the right container */
+  grid-template-rows: 1fr 1fr;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  right: 0;
+  bottom: 0;
 }
 
-.up {
+.right-up {
+  grid-template-rows: 1.5fr 2fr;
+  /* position: relative; */
   background-color: #edd38c;
-  height: 50vh;
+  height: 100%;
   border: 5px solid pink;
 }
 
-.down {
+.right-down {
+  /* position: relative; */
   background-color: #8c7d54;
-  height: 50vh;
-  border: 5px solid pink;
+  height: 100%;
+  border: 5px solid black;
+  overflow: hidden;
 }
 
 #textarea-left {
@@ -59,32 +73,88 @@ body {
 }
 .create-entity {
   background: gray;
-  height: 250px;
-  width: 700px;
+  height: 65%;
+  width: 95%;
+  margin-left: 20px;
+  margin-right: 10px;
   position: relative;
 }
 
-.innerc {
-  background: orange;
-  width: 600px;
-  height: 230px;
+.create-entity-inner {
+  width: 100%;
+  height: 90%;
   margin: 0 auto;
 }
-/* .create-entity { */
-/*     position: relative; */
-/*     height: 100px; */
-/*     width: 100px; */
+
+.create-entity-buttons {
+  text-align: center;
+}
+
+#create-buttons {
+  margin-right: 20px;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  margin: 10px 0px 10px 20px;
+  /* margin-right: 20px; */
+}
+
+/* label { */
+/*   grid-column: 1/2; */
 /* } */
 /*  */
-/* .innerc { */
-/*   position: absolute; */
-/*   transform: translate(-50%, -50%); */
+/* input, */
+/* button { */
+/*   grid-column: 2/3; */
 /* } */
 
+.column1 {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  row-gap: 10px;
+}
+
+.column2 {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  row-gap: 10px;
+}
+
+.submit-entity {
+  grid-column: 1/3;
+  grid-row: 2/3;
+  text-align: center;
+}
+
 #textarea-right {
-  /* height: calc(100% - 10px); [> Subtract the border width from the height <] */
-  height: 100%; /* subtract the border width from the height */
+  height: 100%;
   width: 100%;
   border: 5px solid gray;
   box-sizing: border-box;
+}
+
+.entity-buttons-title {
+  text-align: center;
+  padding: 5px;
+}
+
+.entity-buttons-buttons {
+  height: 100%;
+  width: 100%;
+  padding: 0px 10px 30px;
+  text-align: left;
+  overflow: auto;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  border-radius: 0;
+  width: 100%;
+  z-index: 1;
+  text-align: center;
 }
