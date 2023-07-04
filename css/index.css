@@ -18,14 +18,38 @@ body {
   box-sizing: border-box;
 }
 
+.container {
+  display: grid;
+  /* grid-template-rows: 10fr 1fr; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 .grid {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  height: 97%;
+  width: 100%;
+  /* right: 0; */
+  /* bottom: 0; */
+}
+
+.footer {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  border-radius: 0;
+  height: 3%;
+  width: 100%;
+  z-index: 1;
+  text-align: center;
+  padding: 3px 0px 3px 0px;
+  background-color: white;
 }
 
 .left {
@@ -40,7 +64,7 @@ body {
 
 .right {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  /* grid-template-rows: 1fr 1fr; */
   position: fixed;
   top: 0;
   left: 50%;
@@ -65,7 +89,7 @@ body {
 }
 
 #textarea-left {
-  /* height: calc(100% - 10px); [> Subtract the border width from the height <] */
+  resize: none;
   height: 99.5%; /* Subtract the border width from the height */
   width: 100%;
   border: 5px solid gray;
@@ -78,6 +102,7 @@ body {
   margin-left: 20px;
   margin-right: 10px;
   position: relative;
+  overflow: auto;
 }
 
 .create-entity-inner {
@@ -102,15 +127,6 @@ form {
   /* margin-right: 20px; */
 }
 
-/* label { */
-/*   grid-column: 1/2; */
-/* } */
-/*  */
-/* input, */
-/* button { */
-/*   grid-column: 2/3; */
-/* } */
-
 .column1 {
   display: grid;
   grid-template-columns: 1fr 5fr;
@@ -130,9 +146,10 @@ form {
 }
 
 #textarea-right {
+  resize: none;
   height: 100%;
   width: 100%;
-  border: 5px solid gray;
+  /* border: 2px solid gray; */
   box-sizing: border-box;
 }
 
@@ -141,20 +158,127 @@ form {
   padding: 5px;
 }
 
-.entity-buttons-buttons {
-  height: 100%;
-  width: 100%;
-  padding: 0px 10px 30px;
-  text-align: left;
-  overflow: auto;
+/* trying out this css after the point of no return. this was working properly  */
+/* .entity-buttons-buttons { */
+/*   height: 100%; */
+/*   width: 100%; */
+/*   padding: 0px 10px 30px; */
+/*   text-align: left; */
+/*   overflow: auto; */
+/* } */
+
+/* ----------- point of no return */
+
+/* .collapsible { */
+/*   background-color: #79a8d1; */
+/*   color: white; */
+/*   cursor: pointer; */
+/*   padding: 18px; */
+/*   width: 100%; */
+/*   border: none; */
+/*   text-align: left; */
+/*   outline: none; */
+/*   font-size: 15px; */
+/* } */
+/*  */
+/* .active, .collapsible:hover { */
+/*   background-color: #395873; */
+/* } */
+/*  */
+/* .collapsible:after { */
+/*   content: '\002B'; */
+/*   color: white; */
+/*   font-weight: bold; */
+/*   float: right; */
+/*   margin-left: 5px; */
+/* } */
+/*  */
+/* .active:after { */
+/*   content: "\2212"; */
+/* } */
+
+/* .content { */
+/*   padding: 0 18px; */
+/*   max-height: 0; */
+/*   overflow: hidden; */
+/*   transition: max-height 0.2s ease-out; */
+/*   background-color: #f1f1f1; */
+/* } */
+/*  */
+
+.title {
+    background-color: #79a8d1;
+    width: 100%;
+    border-bottom: 1px solid #1f1f1f;
+    background: gray;
+    font-size: 1rem;
 }
 
-.footer {
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
-  border-radius: 0;
-  width: 100%;
-  z-index: 1;
-  text-align: center;
+.content {
+    font-size: 1 rem;
+    height: 50%;
+    overflow: hidden;
+}
+.righthaha.title {
+    cursor: pointer;
+}
+
+/* .righthaha.title:after { */
+/*   content: '\002B'; */
+/*   color: white; */
+/*   font-weight: bold; */
+/*   float: right; */
+/*   margin-left: 5px; */
+/* } */
+
+.righthaha.content {
+    background: yellow;
+    height: 40%;
+    opacity: 1;
+    color: #fff;
+    transform-origin: top;
+}
+
+.righthaha.content.toggle {
+    height: 0;
+    padding: 0;
+    opacity: 0;
+    transform: scaleY(0);
+}
+
+.righthaha.title.hover + .righthaha.content {
+    opacity: 0;
+}
+
+.footerhaha {
+    height: 80%;
+    width: 100%;
+    text-align: center;
+    /* overflow-y: auto; */
+}
+
+.note {
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.superb {
+    position: relative;
+    overflow: hidden;
+}
+
+.entity-buttons-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* margin: 0 auto; */
+    /* grid-template-columns: repeat(2, 1fr); */
+    /* gap: 5px; */
+    /* grid-auto-rows: minmax(50px, auto); */
+    position: relative;
+    background-color: #60526e;
+    height: calc(100%+250px);
+    width: 100%;
+    /* padding: 0px 10px 30px; */
+    /* text-align: left; */
 }

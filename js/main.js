@@ -3,6 +3,13 @@
 //   return "Changes you made may not be saved.";
 // };
 
+const title = document.querySelector(".righthaha.title");
+const content = document.querySelector(".righthaha.content");
+
+title.addEventListener("click", () => {
+    content.classList.toggle("toggle");
+});
+
 const textarea = document.querySelector('textarea');
 textarea.addEventListener('keydown', (e) => {
   if (e.keyCode === 9) {
@@ -55,6 +62,7 @@ var entityDict = [];
 
 const createBtn = document.getElementById('create-buttons');
 createBtn.onclick = function(){
+    content.classList.toggle("toggle");
     if (textareaRight.value == ""){
         alert("No buttons to create");
         console.warn("No buttons to create");
