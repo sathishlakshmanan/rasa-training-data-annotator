@@ -3,11 +3,28 @@
 //   return "Changes you made may not be saved.";
 // };
 
+const entityButtons = document.getElementById("entity-buttons");
+entityButtons.innerHTML = "Buttons will appear here";
+
 const title = document.querySelector(".righthaha.title");
 const content = document.querySelector(".righthaha.content");
 
 title.addEventListener("click", () => {
     content.classList.toggle("toggle");
+    const rrr = document.getElementById("righthaha");
+    const sss = document.getElementById("content2");
+    if (rrr.offsetHeight > 100){
+        sss.setAttribute("style", "height:41vh; overflow:auto");
+    }else {
+        sss.setAttribute("style", "height:81vh; overflow:auto");
+    }
+});
+
+const title2 = document.querySelector(".footerhaha.title2");
+const content2 = document.querySelector(".footerhaha.content2");
+
+title2.addEventListener("click", () => {
+    content2.classList.toggle("toggle2");
 });
 
 const textarea = document.querySelector('textarea');
@@ -48,11 +65,11 @@ textarea.addEventListener('keydown', (e) => {
 
 const form = document.getElementById('entity-form');
 const textareaRight = document.getElementById("textarea-right"); 
-textareaRight.value = "";
+textareaRight.value = '{"entity":"city "}, {"entity":"city ","value":"bangalore"}, {"entity":"city ","value":"bangalore","group":"ssd"}, {"entity":"cituy ","value":"bangalore","group":"ssd","role":"from"}, {"entity":"cgity "}, {"entity":"city ","value":"bangalore"}';
 //
 // for development
 const example = document.getElementById("textarea-left"); 
-example.value = "i am from chennai.\n\nthis is bangalore. where is your place?\n\nchennai is in Tamilnadu"
+example.value = "I am from Siegen.\n\nThis place is new to me. Where is your place?\n\nSiegen is in NRW"
 
 // const btn = document.getElementById('submit');
 // console.log(btn);
