@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Training data annotator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./css/index.css">
     </head>
 
@@ -13,14 +14,15 @@
                     <textarea id="textarea-left" placeholder="Add training data here..."> </textarea>
                 </div>
 
-                <div class="right">
-                    <div class="righthaha">
+                <div class="right" id="right">
+                    <div class="righthaha" id="righthaha">
                     <!-- <button class="collapsible">INPUT ENTITY / CREATE BUTTONS</button> -->
                         <!-- <div class="right-up-form"> -->
                         <!-- <div class="title righthaha">INPUT ENTITY / CREATE BUTTONS</div> -->
                         <button class="title righthaha">INPUT ENTITY / CREATE BUTTONS</button>
                         <div class="content righthaha">
                             <form id="entity-form">
+                                <div class="maincolumn">
                                 <div class="column1">
                                     <div class="left-column">
                                         <label for="entity-name">Name</label>
@@ -49,26 +51,28 @@
                                         <input type="text" id="entity-role" name="role" style="width:90%" placeholder="entity role">
                                     </div>
                                 </div>
-                                <div class="submit-entity">
-                                    <button type="submit" id="submit" style="background-color:green" id="submit">Add Entity</button>
-                                    <button type="reset" style="background-color:#ff3300">Reset</button>
+                                </div>
+                                <div class="add-entity-collection">
+                                    <button class="ctbr" type="submit" id="submit">Add</button>
+                                    <button class="ctbr" type="reset">Reset</button>
+                                    <!-- <button type="submit" id="submit" id="submit">Add</button> -->
+                                    <!-- <button type="reset">Reset</button> -->
                                 </div>
                             </form>
                             <div class="create-entity">
-                                <div class="create-entity-inner">
-                                    <textarea id="textarea-right">
-
-                                    </textarea>
+                                <div class="create-entity-text">
+                                    <textarea id="textarea-right"> </textarea>
                                 </div>
                                 <div class="create-entity-buttons">
-                                    <input type="submit" id="create-buttons" value="Create buttons">
-                                    <input type="submit" id="delete-buttons" value="Remove all">
+                                    <button class="ctbr" type="submit" id="create-buttons">Create buttons</button>
+                                    <button class="ctbr" type="reset" id="delete-buttons">Remove all</button>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     <div class="footerhaha">
-                        <div class="superb">USE BUTTONS #todo: sort by entity name</div>
-                        <div class="note">
+                        <button class="title2 footerhaha">USE BUTTONS</button>
+                        <div class="content2 footerhaha" id="content2">
                         <div class="entity-buttons-buttons" id="entity-buttons"></div>
                         </div>
                     </div>
