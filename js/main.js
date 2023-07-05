@@ -79,13 +79,12 @@ var entityDict = [];
 
 const createBtn = document.getElementById('create-buttons');
 createBtn.onclick = function(){
-    content.classList.toggle("toggle");
     if (textareaRight.value == ""){
         alert("No buttons to create");
         console.warn("No buttons to create");
         return 0;
     }
-    var entityButtons = document.getElementById("entity-buttons");
+    const entityButtons = document.getElementById("entity-buttons");
     // const entityBtnNew = document.getElementById('entity-buttons');
     entityButtons.innerHTML = "";
     const existingText = document.getElementById("textarea-right").value; 
@@ -105,8 +104,12 @@ createBtn.onclick = function(){
         // btn.innerHTML = '<span onclick=addButtonValue()>'+ String(dictValue) +'</span>';
         btn.innerHTML = String(dictValue);
         btn.id = String(buttonNumber);
-        btn.style.padding = "5px";
+        btn.style.padding = "3px";
         btn.style.margin = "5px";
+        btn.style.border = "2px solid black";
+        btn.style.boxShadow = "5px 5px 10px -1px black, -5px -5px 10px -1px white";
+        btn.setAttribute("class", "ctbr");
+        // btn.style.boxSizing = "border-box";
 
         // var closeButton = document.createElement("BUTTON");
         // closeButton.className = "button-" + String(buttonNumber);
@@ -116,6 +119,7 @@ createBtn.onclick = function(){
         entityButtons.appendChild(btn);
         // entityButtons.appendChild(closeButton);
     }
+    content.classList.toggle("toggle"); // once the user creates the button, the content of 'entity creation' div is folded to only show buttons
 
     console.log("Buttons created successfully");
     /*
