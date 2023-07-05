@@ -43,190 +43,73 @@ body {
 }
 
 .left {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 50%;
-  bottom: 0;
-  background-color: white;
-  overflow: auto; /* Enable scrolling within the left container if needed */
-}
-
-.right {
-  display: grid;
-  /* grid-template-rows: 1fr 1fr; */
-  position: fixed;
-  top: 0;
-  left: 50%;
-  right: 0;
-  bottom: 0;
-}
-
-.right-up {
-  grid-template-rows: 1.5fr 2fr;
-  /* position: relative; */
-  background-color: #edd38c;
-  height: 100%;
-  border: 5px solid pink;
-}
-
-.right-down {
-  /* position: relative; */
-  background-color: #8c7d54;
-  height: 100%;
-  border: 5px solid black;
-  overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 96vh;
+    width: 50vw;
+    margin: 5px;
+    background-color: white;
+    overflow: auto;
+    border: 5px solid black;
 }
 
 #textarea-left {
-  resize: none;
-  height: 99.5%; /* Subtract the border width from the height */
-  width: 100%;
-  border: 5px solid gray;
-  box-sizing: border-box;
-}
-.create-entity {
-  background: gray;
-  height: 65%;
-  width: 95%;
-  margin-left: 20px;
-  margin-right: 10px;
-  position: relative;
-  overflow: auto;
+    resize: none;
+    height: 99%;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 0;
+    overflow-y: auto;
 }
 
-.create-entity-inner {
-  width: 100%;
-  height: 90%;
-  margin: 0 auto;
+.right {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 96vh;
+    width: 49vw;
+    margin: 5px;
+    top: 0;
+    right: 0;
+    background-color: white;
+    border: 5px solid black;
 }
 
-.create-entity-buttons {
-  text-align: center;
+.righthaha {
+    margin: 2px;
 }
-
-#create-buttons {
-  margin-right: 20px;
-}
-
-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
-  margin: 10px 0px 10px 20px;
-  /* margin-right: 20px; */
-}
-
-.column1 {
-  display: grid;
-  grid-template-columns: 1fr 5fr;
-  row-gap: 10px;
-}
-
-.column2 {
-  display: grid;
-  grid-template-columns: 1fr 5fr;
-  row-gap: 10px;
-}
-
-.submit-entity {
-  grid-column: 1/3;
-  grid-row: 2/3;
-  text-align: center;
-}
-
-#textarea-right {
-  resize: none;
-  height: 100%;
-  width: 100%;
-  /* border: 2px solid gray; */
-  box-sizing: border-box;
-}
-
-.entity-buttons-title {
-  text-align: center;
-  padding: 5px;
-}
-
-/* trying out this css after the point of no return. this was working properly  */
-/* .entity-buttons-buttons { */
-/*   height: 100%; */
-/*   width: 100%; */
-/*   padding: 0px 10px 30px; */
-/*   text-align: left; */
-/*   overflow: auto; */
-/* } */
-
-/* ----------- point of no return */
-
-/* .collapsible { */
-/*   background-color: #79a8d1; */
-/*   color: white; */
-/*   cursor: pointer; */
-/*   padding: 18px; */
-/*   width: 100%; */
-/*   border: none; */
-/*   text-align: left; */
-/*   outline: none; */
-/*   font-size: 15px; */
-/* } */
-/*  */
-/* .active, .collapsible:hover { */
-/*   background-color: #395873; */
-/* } */
-/*  */
-/* .collapsible:after { */
-/*   content: '\002B'; */
-/*   color: white; */
-/*   font-weight: bold; */
-/*   float: right; */
-/*   margin-left: 5px; */
-/* } */
-/*  */
-/* .active:after { */
-/*   content: "\2212"; */
-/* } */
-
-/* .content { */
-/*   padding: 0 18px; */
-/*   max-height: 0; */
-/*   overflow: hidden; */
-/*   transition: max-height 0.2s ease-out; */
-/*   background-color: #f1f1f1; */
-/* } */
-/*  */
 
 .title {
-    background-color: #79a8d1;
-    width: 100%;
-    border-bottom: 1px solid #1f1f1f;
-    background: gray;
-    font-size: 1rem;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    height: 5vh;
+    width: 48vw;
+    border: 3px solid black;
+    text-align: center;
+    font-size: 15px;
+}
+
+.toggle, .title:hover {
+    background-color: #1a1d24;
 }
 
 .content {
     font-size: 1 rem;
-    height: 50%;
+    height: 50vh;
     overflow: hidden;
 }
-.righthaha.title {
-    cursor: pointer;
-}
-
-/* .righthaha.title:after { */
-/*   content: '\002B'; */
-/*   color: white; */
-/*   font-weight: bold; */
-/*   float: right; */
-/*   margin-left: 5px; */
-/* } */
 
 .righthaha.content {
-    background: yellow;
-    height: 40%;
+    background: white;
+    height: 40vh;
     opacity: 1;
     color: #fff;
     transform-origin: top;
+    border: none;
 }
 
 .righthaha.content.toggle {
@@ -236,9 +119,118 @@ form {
     transform: scaleY(0);
 }
 
-.righthaha.title.hover + .righthaha.content {
-    opacity: 0;
+#entity-form {
+    display: grid;
+    color: black;
+    grid-template-rows: 2fr 1fr;
+    grid-gap: 10px;
+    margin: 10px 0px 10px 20px;
 }
+
+/* label { */
+/*     grid-column: 1/2; */
+/* } */
+/*  */
+/* input,  */
+/* button { */
+/*     grid-column: 2/3; */
+/* } */
+
+label {
+    float: right;
+    margin-right: 10px;
+    padding: 3px;
+    color: black;
+    font-weight: bold;
+}
+
+input {
+    padding: 3px;
+    box-shadow:  5px 5px 10px -1px black, -5px -5px 10px -1px white;
+    font-size: 12px;
+    font-weight: 400;
+    width: 300px;
+    margin-right: 50px;
+}
+
+.maincolumn {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 45vw;
+    margin-left: 20px;
+}
+
+.column1 {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    row-gap: 10px;
+}
+
+.column2 {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    row-gap: 10px;
+}
+
+/* .add-entity-collection { */
+/*     display: inline; */
+/*     grid-template-columns: 1fr 1fr; */
+/*     position: relative; */
+/*     margin-left: 80px; */
+/*     width: 15vw; */
+/*     text-align: center; */
+/* } */
+/*  */
+
+.add-entity-collection {
+    width: 45vw;
+    margin-left: 20px;
+    padding-left: 250px;
+}
+
+.needed {
+    display: inline-block;
+}
+
+.create-entity {
+    height: 25vh;
+    width: 45vw;
+    position: relative;
+    margin-left: 40px;
+    overflow: auto;
+    /* remove border and overflow-x later  */
+    overflow-x: hidden;
+}
+
+.create-entity-text {
+    height: 20vh;
+    width: 45vw;
+    /* margin: 0 auto; */
+}
+
+
+.create-entity-buttons {
+    width: 40vw;
+    margin-top: 2px;
+    margin-left: 20px;
+    padding-left: 250px;
+}
+
+/* #create-buttons { */
+/*   margin-right: 20px; */
+/* } */
+
+#textarea-right {
+    resize: none;
+    height: 100%;
+    width: 100%;
+    border: 4px solid black;
+}
+
+/* .entity-buttons-title { */
+/*   text-align: center; */
+/*   padding: 5px; */
+/* } */
 
 .footerhaha {
     margin: 2px;
