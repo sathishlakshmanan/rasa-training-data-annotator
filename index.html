@@ -3,77 +3,88 @@
     <head>
         <meta charset="utf-8">
         <title>Training data annotator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./css/index.css">
     </head>
 
     <body>
-        <div class="grid">
-            <div class="left">
-                <textarea id="textarea-left" placeholder="Add training data here..."> </textarea>
-            </div>
+        <div class="container">
+            <div class="grid">
+                <div class="left">
+                    <textarea id="textarea-left" placeholder="Add training data here..."> </textarea>
+                </div>
 
-            <div class="right">
-                <div class="right-up">
-                    <div class="right-up-form">
-                        <form id="entity-form">
-                            <div class="column1">
-                                <div class="left-column">
-                                    <label for="entity-name">Name</label>
+                <div class="right" id="right">
+                    <div class="righthaha" id="righthaha">
+                    <!-- <button class="collapsible">INPUT ENTITY / CREATE BUTTONS</button> -->
+                        <!-- <div class="right-up-form"> -->
+                        <!-- <div class="title righthaha">INPUT ENTITY / CREATE BUTTONS</div> -->
+                        <button class="title righthaha">INPUT ENTITY / CREATE BUTTONS</button>
+                        <div class="content righthaha">
+                            <form id="entity-form">
+                                <div class="maincolumn">
+                                <div class="column1">
+                                    <div class="left-column">
+                                        <label for="entity-name">Name</label>
+                                    </div>
+                                    <div class="right-column">
+                                        <input type="text" id="entity-name" name="entity" style="width:90%" placeholder="entity name" required>
+                                    </div>
+                                    <div class="left-column">
+                                        <label for="entity-value">Value</label>
+                                    </div>
+                                    <div class="right-column">
+                                        <input type="text" id="entity-value" name="value" style="width:90%" placeholder="entity value">
+                                    </div>
                                 </div>
-                                <div class="right-column">
-                                    <input type="text" id="entity-name" name="entity" style="width:90%" placeholder="entity name" required>
+                                <div class="column2">
+                                    <div class="left-column">
+                                        <label for="entity-group">Group</label>
+                                    </div>
+                                    <div class="right-column">
+                                        <input type="text" id="entity-group" name="group" style="width:90%" placeholder="entity group">
+                                    </div>
+                                    <div class="left-column">
+                                        <label for="entity-role">Role</label>
+                                    </div>
+                                    <div class="right-column">
+                                        <input type="text" id="entity-role" name="role" style="width:90%" placeholder="entity role">
+                                    </div>
                                 </div>
-                                <div class="left-column">
-                                    <label for="entity-value">Value</label>
                                 </div>
-                                <div class="right-column">
-                                    <input type="text" id="entity-value" name="value" style="width:90%" placeholder="entity value">
+                                <div class="add-entity-collection">
+                                    <button class="ctbr" type="submit" id="submit">Add</button>
+                                    <button class="ctbr" type="reset">Reset</button>
+                                    <!-- <button type="submit" id="submit" id="submit">Add</button> -->
+                                    <!-- <button type="reset">Reset</button> -->
                                 </div>
-                            </div>
-                            <div class="column2">
-                                <div class="left-column">
-                                    <label for="entity-group">Group</label>
-                                </div>
-                                <div class="right-column">
-                                    <input type="text" id="entity-group" name="group" style="width:90%" placeholder="entity group">
-                                </div>
-                                <div class="left-column">
-                                    <label for="entity-role">Role</label>
-                                </div>
-                                <div class="right-column">
-                                    <input type="text" id="entity-role" name="role" style="width:90%" placeholder="entity role">
-                                </div>
-                            </div>
-                            <div class="submit-entity">
-                                <button type="submit" id="submit" style="background-color:green" id="submit">Add Entity</button>
-                                <button type="reset" style="background-color:#ff3300">Reset</button>
-                            </div>
-                        </form>
-                        </div>
-                            <br>
+                            </form>
                             <div class="create-entity">
-                                <div class="create-entity-inner">
-                                    <textarea id="textarea-right">
-
-                                    </textarea>
-                                    <br>
+                                <div class="create-entity-text">
+                                    <textarea id="textarea-right"> </textarea>
                                 </div>
                                 <div class="create-entity-buttons">
-                                    <input type="submit" id="create-buttons" value="Create buttons">
-                                    <input type="submit" id="delete-buttons" value="Remove all">
+                                    <button class="ctbr" type="submit" id="create-buttons">Create buttons</button>
+                                    <button class="ctbr" type="reset" id="delete-buttons">Remove all</button>
                                 </div>
                             </div>
+                        </div>
                     </div>
-                    <div class="right-down">
-                        <div class="entity-buttons-title">ENTITY BUTTONS</div>
+                    <div class="footerhaha">
+                        <button class="title2 footerhaha">USE BUTTONS</button>
+                        <div class="content2 footerhaha" id="content2">
                         <div class="entity-buttons-buttons" id="entity-buttons"></div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="footer">
+            <div class="footercontent">
                 <a href="https://github.com/sathishlakshmanan" target="_blank">@Sathish Lakshmanan</a>
                 <a href="https://github.com/sathishlakshmanan/rasa-training-data-annotator" target="_blank">GitHub</a>
             </div>
+        </div>
     <script src="./js/main.js"> </script>
+</script>
     </body>
 </html>

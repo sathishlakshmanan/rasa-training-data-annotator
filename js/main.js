@@ -3,6 +3,30 @@
 //   return "Changes you made may not be saved.";
 // };
 
+const entityButtons = document.getElementById("entity-buttons");
+entityButtons.innerHTML = "Buttons will appear here";
+
+const title = document.querySelector(".righthaha.title");
+const content = document.querySelector(".righthaha.content");
+
+title.addEventListener("click", () => {
+    content.classList.toggle("toggle");
+    const rrr = document.getElementById("righthaha");
+    const sss = document.getElementById("content2");
+    if (rrr.offsetHeight > 100){
+        sss.setAttribute("style", "height:41vh; overflow:auto");
+    }else {
+        sss.setAttribute("style", "height:81vh; overflow:auto");
+    }
+});
+
+const title2 = document.querySelector(".footerhaha.title2");
+const content2 = document.querySelector(".footerhaha.content2");
+
+title2.addEventListener("click", () => {
+    content2.classList.toggle("toggle2");
+});
+
 const textarea = document.querySelector('textarea');
 textarea.addEventListener('keydown', (e) => {
   if (e.keyCode === 9) {
@@ -40,12 +64,6 @@ textarea.addEventListener('keydown', (e) => {
 });
 
 const form = document.getElementById('entity-form');
-const textareaRight = document.getElementById("textarea-right"); 
-textareaRight.value = "";
-//
-// for development
-const example = document.getElementById("textarea-left"); 
-example.value = "i am from chennai.\n\nthis is bangalore. where is your place?\n\nchennai is in Tamilnadu"
 
 // const btn = document.getElementById('submit');
 // console.log(btn);
@@ -60,7 +78,7 @@ createBtn.onclick = function(){
         console.warn("No buttons to create");
         return 0;
     }
-    var entityButtons = document.getElementById("entity-buttons");
+    const entityButtons = document.getElementById("entity-buttons");
     // const entityBtnNew = document.getElementById('entity-buttons');
     entityButtons.innerHTML = "";
     const existingText = document.getElementById("textarea-right").value; 
@@ -80,8 +98,12 @@ createBtn.onclick = function(){
         // btn.innerHTML = '<span onclick=addButtonValue()>'+ String(dictValue) +'</span>';
         btn.innerHTML = String(dictValue);
         btn.id = String(buttonNumber);
-        btn.style.padding = "5px";
+        btn.style.padding = "3px";
         btn.style.margin = "5px";
+        btn.style.border = "2px solid black";
+        btn.style.boxShadow = "5px 5px 10px -1px black, -5px -5px 10px -1px white";
+        btn.setAttribute("class", "ctbr");
+        // btn.style.boxSizing = "border-box";
 
         // var closeButton = document.createElement("BUTTON");
         // closeButton.className = "button-" + String(buttonNumber);
@@ -91,6 +113,7 @@ createBtn.onclick = function(){
         entityButtons.appendChild(btn);
         // entityButtons.appendChild(closeButton);
     }
+    content.classList.toggle("toggle"); // once the user creates the button, the content of 'entity creation' div is folded to only show buttons
 
     console.log("Buttons created successfully");
     /*
